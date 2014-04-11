@@ -8,3 +8,31 @@
 th {
   text-align: left;
 }
+
+.ron h1 {
+  text-align: center;
+}
+
+.ron form input#name {
+
+  margin: 0 auto;
+  display: block;
+  padding:5px; 
+  border:2px solid #c33; 
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 23px;
+}
+
+.ron input[type=submit]{
+  display: block;
+  margin: 0 auto;
+  font-size: 23px;
+  color: white;
+  padding:5px 15px; 
+  background: black; 
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+}

@@ -1,0 +1,21 @@
+<div class="container">
+	<h2>Survey:<%=@survey.title%></h2>
+	<% num = 1 %>
+	<% @survey.questions.each do |question|%>
+     <p><strong><%=num%>:<%= question.content%></strong></p>
+
+     <% question.choices.each do |choice| %>
+       <form method="post" action="/results">
+       <input type="hidden" name="choice" value='<%= choice.id %>' />	
+       <input class="choice" type="radio" name="<%= question.id %>" value="<%=choice.id%>"><%= choice.content %></input><br>
+     <% end %>
+  <% num +=1 %>
+  <% end %>
+       <input class='submit' type="submit" value='submit'>
+       </form>
+<div>
+
+
+
+	# how does ajax get to line 5
+	# so that it can display them in order as a user submits

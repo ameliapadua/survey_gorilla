@@ -9,8 +9,8 @@ require 'faker'
   User.create!(name: name, email: email, password: password )	
 end
 
-#20 surveys
-20.times do
+#3 surveys
+3.times do
 	title = Faker::Lorem.word
   user = User.all.sample
   Survey.create!(title: title, creator_id: user.id)
@@ -34,12 +34,13 @@ order_number = 1
 end
 
 #choices
-40.times do
-   question = Question.all.sample
+4.times do
+   question = Question.all.each do |question|
    content = Faker::Lorem.word
-   4.times do   # each question has four choices
-     Choice.create!(content: content, question_id: question.id)
-   end
+   # 4.times do   # each question has four choices # WRONG!
+   Choice.create!(content: content, question_id: question.id)
+   # end
+  end
 end
 
 #userchoices

@@ -3,6 +3,7 @@ class CreateUserChoices < ActiveRecord::Migration
   	create_table :user_choices do |t|
   		t.integer :choice_id
   		t.integer :participant_id
+  		t.timestamps
   	end
   end
 end

@@ -1,6 +1,9 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+
+
 <h1>Title: <%= @survey.title %></h1>
-
-
 <ul class="survey_results">
 <% question_number = 1 %>
 <% @survey.questions.each do |question| %>
@@ -17,3 +20,20 @@
 <% question_number += 1 %>
 <% end %>
 </ul>
+
+
+
+<div id="container" style="width:100%; height:400px;"></div>
+
+<div class="number_of_questions"><%= @survey.questions.count %></div>
+
+<script type="text/javascript">
+
+
+  var data = <%= @data %>
+</script>
+
+
+
+
+//create an array where each element is the number of participant per question -- in order

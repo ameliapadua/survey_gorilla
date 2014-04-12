@@ -14,4 +14,7 @@ img{
   display: block;
   margin-right: auto;
   margin-left: auto;
+
+.survey_results {
+	list-style-type: none;
 }

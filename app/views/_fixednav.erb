@@ -1,0 +1,11 @@
+<nav>
+  <% if @user %>
+  <div class="username"><a href="/users/<%=@user.id%>"><%= @user.username %></a></div>
+  <div class="home"><a href="/">home</a></div>
+  <div class="submit"><a href="/submit_post">submit</a></div>
+  <div class="logout"><a href="/logout">logout</a></div>
+  <% else %>
+  <div class="home"><a href="/">home</a></div>
+  <div class="login" ><a href="/login">login</a></div>
+  <% end %>
+</nav>

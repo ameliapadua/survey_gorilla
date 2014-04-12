@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
   		t.integer :survey_id
   		t.integer :order_number
   		t.string :content
+  		t.timestamps
   	end
   end
 end

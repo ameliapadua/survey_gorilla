@@ -41,13 +41,13 @@ order_number = 1
 end
 
 #choices
-# 4.times do
+4.times do
 question = Question.all.each do |question|
    content = Faker::Lorem.word
-   4.times do   # each question has four choices # WRONG!
+   # 4.times do   # each question has four choices # WRONG!
    Choice.create(content: content, question_id: question.id)
-   end
-  # end
+   # end
+  end
 end
 
 #userchoices

@@ -8,14 +8,19 @@ get '/surveys/:id' do
   erb :'survey/show'
 end
 
-post '/results' do
-  puts params
-  @choice_id = params[:choice]	
-  user_choice = UserChoice.new(choice_id: @choice_id, participant_id: 1)
+# post '/results' do
+#   puts params
+#   @choice_id = params[:choice]	
+#   user_choice = UserChoice.new(choice_id: @choice_id, participant_id: 1)
 
-  if user_choice.save
-  	erb :results
-  else
-  	redirect '/surveys/:id'
-  end
+#   if user_choice.save
+#   	erb :results
+#   else
+#   	redirect '/surveys/:id'
+#   end
+# end
+
+get '/results' do
+  @survey = Survey.find(1)
+  erb :'survey/results'
 end

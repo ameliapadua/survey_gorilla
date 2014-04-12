@@ -1,4 +1,5 @@
 class SurveyParticipation < ActiveRecord::Base
-  belongs_to :Survey
-  belongs_to :participant, class_name: 'User'
+  validates_uniqueness_of :participant_id, scope: :survey_id
+  belongs_to :survey
+  belongs_to :participant, class_name: 'User', foreign_key: 'participant_id'
 end

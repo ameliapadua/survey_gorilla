@@ -8,3 +8,8 @@
 th {
   text-align: left;
 }
+
+
+.survey_results {
+	list-style-type: none;
+}

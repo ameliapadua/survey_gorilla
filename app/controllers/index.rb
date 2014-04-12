@@ -1,18 +1,33 @@
+enable 'sessions'
+
 get '/' do
-  # Look in app/views/index.erb
+  if session[:id]
+    @user = User.find(session[:id])
+  end
   erb :index
 end
 
-get '/bands' do
-  @band_names = Band.all.map(&:name)
-  erb :bands
+get '/login' do
+  erb :login
 end
 
-post '/bands' do
-  new_band = Band.create!(name: params[:name])
-  new_band.name
+post '/verify' do
+  @user = User.where(name: params[:name], password: params[:password]).first
+  if @user
+    session[:user_id] = @user.id
+    redirect "/user/#{session[:user_id]}"
+  else
+    redirect '/login'
+  end
 end
 
-get '/info' do
-  Demo.new(self).info
+post '/register' do
+  @user = User.create(name: params[:name], password: params[:password], email: params[:email])
+  session[:user_id] = @user.id
+  redirect "/users/#{session[:user_id]}"
+end
+
+get '/user/:user_id' do
+  @user = User.find(session[:user_id])
+  erb :'user/show_user'
 end

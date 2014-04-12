@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Hello <%= @user.name %></h1>
+  <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSz33LXS_gFPxBeoNpMOUGKBuIiDUyRbK21Bnhethi57EQXQr98Eg">
+  <a>Your Surveys</a>
+  <% surveys = Survey.where(creator_id: @user.id) %>
+    <% surveys.each do |survey|%>
+    <%= survey.title %>
+  <% end %>
+</div>

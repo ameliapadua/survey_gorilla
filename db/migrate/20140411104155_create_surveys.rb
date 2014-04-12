@@ -6,3 +6,4 @@ class CreateSurveys < ActiveRecord::Migration
   	end
   end
 end
+

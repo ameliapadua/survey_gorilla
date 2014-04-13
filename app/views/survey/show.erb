@@ -5,14 +5,16 @@
 
   <div id="choices"></div>
 
+  <div id="results"></div>
+
 </div>
 
 <script type="text/javascript">
-  var complete = function () {
-    // show the results
-    // go to another page or something
-  }
   
+  var complete = function () {
+    window.location = "/results";
+  }
+
   var survey = new Survey(<%= @survey_json %>, complete);
   
   survey.displayTitle('#title');

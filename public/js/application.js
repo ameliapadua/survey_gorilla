@@ -5,8 +5,8 @@ $(document).ready(function() {
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 
-
  });
+
 
 
 
@@ -20,12 +20,13 @@ function Survey(surveyJson, complete) {
 }
 
 Survey.prototype.displayTitle = function(selector) {
-  $(selector).append(this.title)
+  $(selector).append(this.title);
 }
 
 Survey.prototype.displayQuestion = function(question_selector, choices_selector) {
   var self = this;
-  var currentQuestion = self.questions[self.questionIndex]
+  var currentQuestion = self.questions[self.questionIndex];
+  console.log(this);
 
   $(question_selector).empty();
   $(choices_selector).empty();
@@ -39,18 +40,20 @@ Survey.prototype.displayQuestion = function(question_selector, choices_selector)
   $('#choices input').click(function(e){
     e.preventDefault();
 
-    var choice_data = {choice_id: this.value}
+    var choice_data = {choice_id: this.value};
 
     $.post('/surveys/' + self.id, choice_data, function(response){
+      self.questionIndex++;
       if (self.questionIndex < self.questions.length) {
-        self.questionIndex++;
         self.displayQuestion(question_selector, choices_selector);
       }
       else{
-        alert("We've reached the end!");
+        complete();
       }
     });
 
   });
 
 }
+
+

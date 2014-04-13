@@ -4,6 +4,7 @@ get '/surveys' do
 end
 
 get '/surveys/:id' do
+  puts "The params: #{params.inspect}"
   survey = Survey.find(params[:id])
   @survey_json = survey.to_json(:include => { :questions => { :include => :choices}})
   erb :'survey/show'

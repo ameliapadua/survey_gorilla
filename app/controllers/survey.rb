@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 get '/surveys' do
   @surveys = Survey.all
   erb :'survey/index'
@@ -25,7 +25,7 @@ get '/results' do
   @survey = Survey.find(1)
   erb :'survey/results'
 end
-=======
+
 enable :sessions
 
 get '/create' do 
@@ -45,4 +45,3 @@ end
 post '/publish' do
   p params
 end
->>>>>>> Ron_Surveys_CRUD

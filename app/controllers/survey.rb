@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 get '/surveys' do
   @surveys = Survey.all
   erb :'survey/index'
@@ -24,3 +25,24 @@ get '/results' do
   @survey = Survey.find(1)
   erb :'survey/results'
 end
+=======
+enable :sessions
+
+get '/create' do 
+  @header = "Create"
+  @name = "Name Your Survey"
+  erb :'survey/create'
+end
+
+get '/update/:survey_id' do
+  @header = "Update"
+  @survey = Survey.find(params[:survey_id])
+  name = @survey.name
+  questions = @survey.questions
+  erb :'survey/create'
+end
+
+post '/publish' do
+  p params
+end
+>>>>>>> Ron_Surveys_CRUD

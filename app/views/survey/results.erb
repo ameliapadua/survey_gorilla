@@ -27,7 +27,7 @@
 
 <div id="container" style="width:100%; height:400px;"></div>
 
-<div class="number_of_questions"><%= @survey.questions.count %></div>
+<div style='display: none' id="num_questions" class="number_of_questions"><%= @survey.questions.count %></div>
 
 <script type="text/javascript">
 
@@ -40,4 +40,3 @@
 
 
 
-//create an array where each element is the number of participant per question -- in order

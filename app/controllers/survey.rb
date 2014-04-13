@@ -23,7 +23,7 @@ end
 # end
 
 get '/results' do
-  @survey = Survey.find(1)
+  @survey = Survey.find(1)   # this needs to change
 
   choice_participants = []
   @survey.questions.each do |question|

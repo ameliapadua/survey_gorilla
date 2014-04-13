@@ -18,3 +18,9 @@ img{
 .survey_results {
 	list-style-type: none;
 }
+
+span.percentage {
+   color: #00ff00;
+}
+
+

@@ -3,6 +3,8 @@
 
 
 
+<div class='container'>
+
 <h1>Title: <%= @survey.title %></h1>
 <ul class="survey_results">
 <% question_number = 1 %>
@@ -13,7 +15,7 @@
     <% total_survey_participants = @survey.participants.length %>
   	<% question.choices.each do |choice| %>
       <% participants_per_choice = choice.participants.length%>
-  	  <li><%= choice.content %> (<%= (participants_per_choice/ total_survey_participants.to_f)*100%>%)</li>
+  	  <li><%= choice.content %> <span class='percentage'>(<%= (participants_per_choice/ total_survey_participants.to_f)*100%>%)</span></li>
   	<% end %>
   </ul>
 
@@ -33,6 +35,8 @@
   var data = <%= @data %>
 </script>
 
+
+</div class='container'>
 
 
 

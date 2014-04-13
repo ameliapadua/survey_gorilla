@@ -29,5 +29,5 @@ end
 
 get '/user/:user_id' do
   @user = User.find(session[:user_id])
-  erb :'user/show_user'
+  redirect '/surveys'
 end

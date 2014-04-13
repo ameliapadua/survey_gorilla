@@ -1,21 +1,22 @@
 <div class="container">
-	<h2>Survey:<%=@survey.title%></h2>
-	<% num = 1 %>
-	<% @survey.questions.each do |question|%>
-     <p><strong><%=num%>:<%= question.content%></strong></p>
+  <div><h3 id="title"></h3></div>
 
-     <% question.choices.each do |choice| %>
-       <form method="post" action="/results">
-       <input type="hidden" name="choice" value='<%= choice.id %>' />	
-       <input class="choice" type="radio" name="<%= question.id %>" value="<%=choice.id%>"><%= choice.content %></input><br>
-     <% end %>
-  <% num +=1 %>
-  <% end %>
-       <input class='submit' type="submit" value='submit'>
-       </form>
-<div>
+  <div id="question"></div>
 
+  <div id="choices"></div>
 
+</div>
 
-	# how does ajax get to line 5
-	# so that it can display them in order as a user submits
+<script type="text/javascript">
+  var complete = function () {
+    // show the results
+    // go to another page or something
+  }
+  
+  var survey = new Survey(<%= @survey_json %>, complete);
+  
+  survey.displayTitle('#title');
+
+  survey.displayQuestion('#question', '#choices');
+
+</script>

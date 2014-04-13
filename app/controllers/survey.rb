@@ -43,5 +43,36 @@ get '/update/:survey_id' do
 end
 
 post '/publish' do
-  p params
+  @user = current_user
+  if params[:survey_id]
+    p s = Survey.find(params[:survey_id])
+    p params
+  else
+    s = Survey.create(title: params[:name], creator_id: @user.id)
+    questions = params.map { |name, v| name if name.match(/^q{1}[0-9]+$/) }.compact
+    p questions
+    questions.each do |qid| 
+      puts "IN QUESTIONS"
+      p params[qid]
+      q = Question.create(content: params[qid], survey_id: s.id)
+        answers = params.map do |id, v| 
+          puts "an id"
+          p id
+          missing = id.match(/a{1}[0-9]+/).to_s
+          puts qid
+          if missing && id == ( qid + missing )
+            puts id
+            id
+          end
+        end
+        answers.compact!
+        answers.each do |aid|
+          c = Choice.create(content: params[aid], question_id: q.id)
+          p c
+        end
+      # q.save
+    end
+    # p s.save
+  end
+  redirect '/surveys'
 end

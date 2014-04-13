@@ -9,30 +9,76 @@ th {
   text-align: left;
 }
 
-.ron h1 {
+ul {
+  list-style-type: none;
+  margin-top: 0;
+}
+
+h1 {
   text-align: center;
 }
 
-.ron form input#name {
+div.addA {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 40px;
+  margin-top: 10px;
+  width: 7%;
 
+}
+div.addA:hover {
+  color: green;
+}
+
+div#addQ {
+  width: 7%;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+div#addQ:hover {
+  cursor: pointer;
+  color: green;
+  font-style: bold;
+}
+
+span[class*=remove] {
+  font-size: 25px;
+}
+
+span[class*=remove]:hover {
+  color: red;
+  cursor: pointer;
+  font-style: bold;
+}
+
+input[id*=q] {
+  width: 95% ;
+}
+
+input#name {
   margin: 0 auto;
   display: block;
   padding:5px; 
-  border:2px solid #c33; 
+  border:2px solid black; 
   -webkit-border-radius: 5px;
   border-radius: 5px;
   font-size: 23px;
 }
 
-.ron input[type=submit]{
+input[type=submit]{
   display: block;
   margin: 0 auto;
   font-size: 23px;
   color: white;
-  padding:5px 15px; 
+  padding: 5px 15px; 
   background: black; 
-  border:0 none;
-  cursor:pointer;
+  border: 0 none;
+  cursor: pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px; 
+}
+input[type=submit]:hover{
+  /*background-color: #335;*/
+  opacity: 0.7;
 }

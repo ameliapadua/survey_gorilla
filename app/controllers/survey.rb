@@ -14,6 +14,6 @@ get '/update/:survey_id' do
   erb :'survey/create'
 end
 
-# post '' do
-
-# end
+post '/publish' do
+  p params
+end

@@ -1,3 +1,5 @@
+require 'json'
+
 get '/surveys' do
   @surveys = Survey.all
   erb :'survey/index'
@@ -22,5 +24,13 @@ end
 
 get '/results' do
   @survey = Survey.find(1)
+
+  choice_participants = []
+  @survey.questions.each do |question|
+    question.choices.each do |choice|
+       choice_participants << choice.participants.count   # this cant be the way
+    end
+  end
+  @data = choice_participants.to_json   #an array of partipants in question order
   erb :'survey/results'
 end

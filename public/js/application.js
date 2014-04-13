@@ -1,25 +1,43 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 
-//   var choice = $('.choice')
+// create a js array of all questions
+// get the number of elements in that array
+// create an categories array that has the same number of elements - each element being 'Question X'
 
-//   $('.submit').click(function(event){
-//      event.preventDefault();
+//create an array where each element is the number of participant per question -- in order
 
-//      $.post('/surveys/:id', function(data) {
-//         $( ".result" ).html( data );
-//      });
-//   });  
+var number_of_questions = parseInt($('.number_of_questions').html()) // WORKS!!!
+console.log(number_of_questions)
+
+var categories = new Array(number_of_questions)
+for(var i = 0; i < number_of_questions * 4 + 1 ; i += 1) {
+  categories[i] = 'Answer' + (i +1)
+}
+
+    
+	   $(function () { 
+	    $('#container').highcharts({
+	        chart: {
+	            type: 'bar'
+	        },
+	        title: {
+	            text: 'Survey Records'
+	        },
+	        xAxis: {
+	            categories: categories // amount of questions
+	        },
+	        yAxis: {
+	            title: {
+	                text: 'Amount of Participants'
+	            }
+	        },
+	        series: [{
+	            name: 'Participants',
+	            data:  data//[1, 2, 4, 15,]  // amount of participants per question
+	     
+	        }]
+	    });
+	});
  });
 
-
-
-
-
-// $.post( "ajax/test.html", function( data ) {
-//   $( ".result" ).html( data );
-// });

@@ -1,16 +1,150 @@
+<script type="">
+  var qCount = 1;
+  var new_answer = function (id) {
+    return '<li><input type="text" name="a'+id+'" id="a'+id+'" placeholder="Answer"><span class="removeA">   x</span></li>'
+  };
+  var new_question = function (id) {
+    return  '<input type="text" name="q'+id+'" id="q'+id+'" placeholder="Question"><span class="removeQ">   x</span>' + 
+            '<div class="addA">  +</div>' +
+              '<ul class="answers">' +
+                '<li><input type="text" name="a1" id="a1" placeholder="Answer"><span class="removeA">   x</span></li>' + 
+              '</ul>';
+  };
+  
+  //add initial question to the DOM
+  $('form').append($(new_question(qCount)));
+  //remove a question    
+  $(document).on('click','.removeQ', function(){
+    qCount--;
+    $(this).prev().remove();
+    $(this).next().remove()
+    $(this).next().children().andSelf().remove();
+    $(this).remove();
+  });
+  //add a new question
+  $(document).on('click','#addQ', function(){
+    qCount++;
+    $('form').append($(new_question(qCount)));
+  });
+  //remove an answer
+  $(document).on('click','.removeA', function() {
+    $(this).prev().remove();
+    $(this).remove();
+  });
+  //add an answer
+  $(document).on('click','.addA',function() {
+    var answers = $(this).next();
+    id = answers.find('li').size() + 1;
+    answers.append(new_answer(id));
+  });
+
+  // TODO validations, reordering, ajax messages
+  </script>
+
+  <style>
+  ul {
+  list-style-type: none;
+  margin-top: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+div.addA {
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 40px;
+  margin-top: 10px;
+  width: 7%;
+
+}
+div.addA:hover {
+  color: green;
+}
+
+div#addQ {
+  width: 7%;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+div#addQ:hover {
+  cursor: pointer;
+  color: green;
+  font-style: bold;
+}
+
+span[class*=remove] {
+  font-size: 25px;
+}
+
+span[class*=remove]:hover {
+  color: red;
+  cursor: pointer;
+  font-style: bold;
+}
+
+input[id*=q] {
+  width: 95% ;
+}
+
+input#name {
+  margin: 0 auto;
+  display: block;
+  padding:5px; 
+  border:2px solid black; 
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 23px;
+}
+
+input[type=submit] {
+  display: block;
+  margin: 0 auto;
+  font-size: 23px;
+  color: white;
+  padding: 5px 15px; 
+  background: black; 
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; 
+}
+input[type=submit]:hover {
+  /*background-color: #335;*/
+  opacity: 0.7;
+}
+</style>
+
 <div class="container ron">
   <h1><%= @header %></h1>
-  <form method="post" action="/publish">
-    <input id="name" type="text" name="name"placeholder="<%= @name %>">
+  <form class="publish" method="post" action="/publish">
+<% if @survey %>
+    <input id="name" type="text" name="name" placeholder="<%= @name %>" value="<%=@survey.title%>">
+<% else %>
+    <input id="name" type="text" name="name" placeholder="<%= @name %>" >
+<% end %>
     <br><br>
     <input class="publish" type="submit" value="Publish">
     <div id="addQ">+</div>
 
-
-
-
-
-
+<% if @survey %>
+  <% @questions.each_with_index do |q, i| %>
+    <% qid = i + 1 %>
+<input type="text" name="q<%=qid%>" id="q<%=qid%>" placeholder="Question" value="<%=q.content%>">
+<span class="removeQ">   x</span>
+<div class="addA">  +</div>
+<ul>
+    <% @choices = q.choices %>
+    <% @choices.each_with_index do |a, j| %>
+    <% aid = j + 1 %>
+<li><input type="text" name="a<%=aid%>" id="a<%=aid%>" placeholder="Answer" value="<%=a.content%>">
+<span class="removeA">   x</span></li>
+    <% end %>
+</ul>
+  <% end %>
+<% end %>
 
   </form>
 </div>

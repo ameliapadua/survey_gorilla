@@ -37,8 +37,8 @@ end
 get '/update/:survey_id' do
   @header = "Update"
   @survey = Survey.find(params[:survey_id])
-  name = @survey.name
-  questions = @survey.questions
+  @name = "Name Your Survey"
+  @questions = @survey.questions
   erb :'survey/create'
 end
 

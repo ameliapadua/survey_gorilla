@@ -92,9 +92,10 @@ post '/publish' do
             id
           end
         end
-        answers.compact!
+        answers.compact!.shift
         answers.each do |aid|
-          c = Choice.create(content: params[aid], question_id: q.id)
+          puts aid 
+          # c = Choice.create(content: params[aid], question_id: q.id)
         end
       # q.save
     end
@@ -102,3 +103,8 @@ post '/publish' do
   end
   redirect '/surveys'
 end
+
+get '/delete/:survey_id' do
+  Survey.find(params[:survey_id]).destroy
+  redirect '/surveys'
+end 

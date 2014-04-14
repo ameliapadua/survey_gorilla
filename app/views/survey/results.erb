@@ -15,13 +15,14 @@
     <% total_survey_participants = @survey.participants.length %>
   	<% question.choices.each do |choice| %>
       <% participants_per_choice = choice.participants.length%>
-  	  <li><%= choice.content %> <span class='percentage'>(<%= (participants_per_choice/ total_survey_participants.to_f)*100%>%)</span></li>
+  	  <li><%= choice.content %> <span class='percentage'>(<%= ((participants_per_choice/ total_survey_participants.to_f)*100).round(2)%>%)</span></li>
   	<% end %>
   </ul>
 
 <% question_number += 1 %>
 <% end %>
 </ul>
+<a href='/surveys'>Back to Surveys</a>
 
 
 

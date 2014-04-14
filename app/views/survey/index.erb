@@ -2,7 +2,8 @@
 	<h3>Select a survey</h3>
 	<ul>
 		<% @surveys.each do |survey| %>
-		  <li><a href = "/surveys/<%=survey.id%>"><%= survey.title %></a></li>
+		  <li display='inline-block'><a href = "/surveys/<%=survey.id%>"><%= survey.title %></a><span> </span><a href="/update/<%=survey.id%>">EDIT</a><span> </span><a href="/delete/<%=survey.id%>">DELETE</a></li>
 		<% end %>
 	</ul>
+  <h3><a href="/create">Create a Survey</a></h3>
 </div>

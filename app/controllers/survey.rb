@@ -8,6 +8,8 @@ end
 get '/surveys/:id' do
   survey = Survey.find(params[:id])
   @survey_json = survey.to_json(:include => { :questions => { :include => :choices}})
+  @user = current_user   ###### new stuff ####
+  @survey_participation = SurveyParticipation.create(survey_id: survey.id, participant_id: @user.id)  ### this is also new stuff
   erb :'survey/show'
 end
 

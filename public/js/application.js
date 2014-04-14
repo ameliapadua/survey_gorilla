@@ -93,6 +93,3 @@ Survey.prototype.displayQuestion = function(question_selector, choices_selector)
   });
 
 }
-
-
-

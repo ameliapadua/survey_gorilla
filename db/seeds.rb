@@ -23,7 +23,7 @@ Survey.all.each do |survey|
   end
 end
 
-
+    
 # 20.times do
 # 	survey = Survey.all.sample
 # 	user = User.all.sample
